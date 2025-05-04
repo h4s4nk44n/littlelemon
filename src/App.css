@@ -36,3 +36,145 @@
     transform: rotate(360deg);
   }
 }
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2em;
+  background-color: transparent;
+  color: white;}
+
+
+.nav-links {
+    display: flex;
+    flex-direction: row;
+    gap: 1.2em;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+.nav-links li {
+    color: #000;
+    font-family: Inter;
+    font-size: 1.1em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+
+.page-container {
+    width: 100%;
+    max-width: 53.75em; /* or whatever your Figma frame size is */
+    margin: 0 auto;
+    padding: 0 4.375; /* use padding instead of margin for inner spacing */
+  }
+
+.row-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: start;
+    padding: 0 2em;
+    margin-top: 2em;
+  }
+
+.food-row {
+  display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.food-name {
+    font-family: Inter;
+    justify-items: start;
+  }
+.homepage {
+    margin-top : 1em;
+    background: #495E57;
+    height: 31em;
+   }
+
+.hero-image {
+    flex: 1;
+  }
+
+.hero-image img {
+    width: 100%;
+    border-radius: 15px;
+    object-fit: cover;
+    margin-top: 3.5em;
+  }
+.little-header {
+  color: #F4CE14;
+  font-family: Inter;
+  font-size: 64px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin : 0;
+  padding : 0;
+  margin-top: 1em;
+}
+
+.free-trial {
+  display: inline-flex;
+  padding: 20px 18px 21px 18px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 7px;
+  background: #F4CE14;
+  color: #000;
+  font-family: Inter;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  width: fit-content;
+}
+.hero-text-column {
+  display: flex;
+  flex-direction: column;
+  padding-right: 3em;
+  gap:2.8em;
+}
+.homepage-paragraph {
+  width: 420px;
+  height: 118px;
+  flex-shrink: 0;
+
+  color: #FFF;
+  font-family: Inter;
+  font-size: 1.75em;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.weekly-specials {
+  margin-top: 15em;
+  display : flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 0;
+  width: 100%;
+  max-width: 53.75em;
+}
+
+.food-item {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 15.5em;
+}
+
+@media (min-width: 53.75em) {
+  .page-container {
+    padding: 0 2rem;         /* Adds more space on larger screens */
+  }
+}
