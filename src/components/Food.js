@@ -4,7 +4,7 @@ import React from "react";
 function Food({ name, price, description, image }) {
     return (
         <div className="food-item">
-            <div class="hero-image">
+            <div class="food-image">
                 <img src={image} alt={name}/>
             </div>
             <div>

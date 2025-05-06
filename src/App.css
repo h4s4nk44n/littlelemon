@@ -110,6 +110,20 @@
     object-fit: cover;
     margin-top: 3.5em;
   }
+
+.food-image {
+    width: 100%;
+    object-fit: fill;
+    margin-top: 1.5em;
+  }
+.food-image img {
+    width: 100%;
+    object-fit: fill;
+    margin-top: 1.5em;
+    width : 15.5em;
+    height: 11em;
+  }
+
 .little-header {
   color: #F4CE14;
   font-family: Inter;
@@ -121,7 +135,14 @@
   padding : 0;
   margin-top: 1em;
 }
-
+.weekly-special {
+  color: #000;
+  font-family: Inter;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
 .free-trial {
   display: inline-flex;
   padding: 20px 18px 21px 18px;
@@ -155,26 +176,133 @@
   font-weight: 700;
   line-height: normal;
 }
-.weekly-specials {
-  margin-top: 15em;
-  display : flex;
-  flex-direction: row;
-  justify-content: space-between;
-  gap: 0;
+
+.weekly-block {
+  margin-top: 10em;
   width: 100%;
-  max-width: 53.75em;
+  display: flex;
+  justify-content: center;
+}
+
+.weekly-content {
+  width: 100%;
+  max-width: 53.75em;  /* or whatever width works for your layout */
+  padding: 0 0;
+  box-sizing: border-box;
+}
+.weekly-specials {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1em;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top : 2em;
 }
 
 .food-item {
-  display: inline-flex;
+  width : 15.5em;
+  height :11em;
+  box-sizing: border-box;
+  margin: 0 auto;
+  display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  width: 15.5em;
 }
 
+.food-price {
+  color: #B5A000;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.testimonial-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 2em;
+  margin-top : 25em;
+  padding-inline: 2em;
+}
 @media (min-width: 53.75em) {
   .page-container {
-    padding: 0 2rem;         /* Adds more space on larger screens */
+    padding: 0 2rem;
   }
+}
+
+.testimonial-card {
+  background-color : rgba(116, 116, 116, 0.5);
+  max-width: 30%;
+  text-align: left;
+  border-radius : 1em;
+}
+
+.testimonials{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex: space-between;
+  gap: 2em;
+}
+
+.testimonial-image-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1em;
+  overflow: hidden;
+  border-radius: 50%;
+}
+.user-name-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: start;
+}
+.attitude,
+.testimonial-text {
+  padding: 1em;
+}
+
+.attitude {
+  padding-left: 1em !important;
+  margin: 0;
+  width: 100%;
+  text-align: left;
+  display: block;
+}
+
+
+.testimonial-image {
+  width: 5em;
+  height: 5em;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.testimonial-padding{
+  padding: 1em;
+  margin: 1em;
+}
+.testimonial-header{
+  color: #000;
+  font-family: Inter;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.testimonial-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 2em;
+  margin-top : 25em;
 }

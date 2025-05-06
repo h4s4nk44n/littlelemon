@@ -2,6 +2,9 @@ import './App.css';
 import Header from './components/Header';
 import Homepage from './components/Homepage';
 import Weekly from './components/Weekly';
+import Testimonials from './components/Testimonials';
+import About from './components/About';
+
 function App() {
   return (
     <>
@@ -13,8 +16,16 @@ function App() {
         <Homepage />
       </div>
 
-      <div className="page-container weekly-specials">
+      <div className="weekly-specials">
         <Weekly />
+      </div>
+
+      <div className="testimonial-block">
+        <Testimonials />
+      </div>
+
+      <div className="about-block">
+        <About />
       </div>
     </>
   )
