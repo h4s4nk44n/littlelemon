@@ -4,6 +4,7 @@ import Homepage from './components/Homepage';
 import Weekly from './components/Weekly';
 import Testimonials from './components/Testimonials';
 import About from './components/About';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -26,6 +27,9 @@ function App() {
 
       <div className="about-block">
         <About />
+      </div>
+      <div className= "footer-block">
+        <Footer />
       </div>
     </>
   )

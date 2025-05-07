@@ -306,3 +306,139 @@
   padding: 0 2em;
   margin-top : 25em;
 }
+
+.about-page {
+  margin-top : 1em;
+  max-width: 53.75em;
+  display: flex;
+  justify-content: center;
+}
+
+.about-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 4em;
+  padding: 4em 2em;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.about-text {
+  flex: 1;
+  min-width: 300px;
+}
+
+.about-header {
+  font-size: 2.5em;
+  font-weight: bold;
+  color: #222;
+  margin-bottom: 0.2em;
+}
+
+.about-city {
+  font-size: 1.5em;
+  color: #666;
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+
+.about-text p {
+  font-size: 1em;
+  line-height: 1.6;
+  color: #333;
+  margin-bottom: 1em;
+}
+
+.about-description {
+  color: #000;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.about-section {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 2em;
+  padding: 2em;
+  align-items: end;
+  max-width: 53.75em;
+}
+
+.about-image {
+  width: 100%;
+  height: auto;
+  border-radius: 1em;
+  object-fit: fill;
+}
+
+.about-photo {
+  width: 100%;
+  height: auto;
+  border-radius: 1em;
+  object-fit: fill;
+}
+
+.about-block {
+  margin-top: 10em;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-around;
+  padding: 3em 2em;
+  flex-wrap: wrap;
+  font-family: Inter, sans-serif;
+  max-width: 53.75em;
+}
+
+.footer-column {
+  display: flex;
+  flex-direction: column;
+  min-width: 150px;
+  gap: 0.5em;
+}
+
+.footer-column h4 {
+  font-size: 1em;
+  font-weight: 700;
+  margin-bottom: 0.5em;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-column li {
+  font-size: 0.95em;
+  color: #111;
+}
+
+.footer-block {
+  background-color :  #495E57;
+}
+
+.footer-column li{
+  color: #d6d6d6;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 170%; /* 27.2px */
+}
+
+.footer-column h4 {
+  color: #d6d6d6;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
