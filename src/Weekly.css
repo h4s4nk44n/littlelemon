@@ -1,0 +1,151 @@
+/* Weekly Section Styles */
+.weekly-block {
+    margin-top: 10em;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 0 1em;
+    box-sizing: border-box;
+  }
+  
+  .weekly-content {
+    width: 100%;
+    max-width: 53.75em; /* Max width for larger screens */
+    padding: 0 2em;
+    box-sizing: border-box;
+  }
+  
+  .food-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  }
+  
+  .weekly-speacial {
+    font-family: Inter;
+    font-size: 2em;
+    color: #333;
+    font-weight: 700;
+    margin-bottom: 1em;
+    text-align: left;
+    flex-basis: 100%; /* Make sure it takes full width on smaller screens */
+  }
+  
+  .free-trial {
+    display: inline-flex;
+    padding: 20px 18px 21px 18px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 7px;
+    background: #F4CE14;
+    color: #000;
+    font-family: Inter;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: normal;
+    width: fit-content;
+    flex-basis: 100%; /* Make the button take full width on smaller screens */
+    margin-top: 1em;
+    text-align: center;
+  }
+  
+  /* Food Item Layout */
+  .weekly-specials {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 2em;
+    box-sizing: border-box;
+    margin-top: 2em;
+  }
+  
+  .food-item {
+    width: 100%;
+    max-width: 15.5em;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .food-price {
+    color: #B5A000;
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: normal;
+  }
+  
+  .food-name {
+    font-family: Inter;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0.5em 0;
+  }
+  
+  .food-description {
+    text-align: center;
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 1em;
+    padding: 0 1em;
+    font-weight: 400;
+  }
+  
+  /* Responsive Design for smaller screens */
+  @media (max-width: 768px) {
+    .weekly-content {
+      padding: 0 1em;
+    }
+  
+    .food-row {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+  
+    .weekly-speacial {
+      font-size: 1.5em; /* Smaller font size for smaller screens */
+      text-align: center;
+    }
+  
+    .food-item {
+      width: 100%;
+      max-width: 100%;
+      margin-bottom: 2em;
+    }
+  
+    .food-price {
+      font-size: 18px; /* Slightly larger price font */
+    }
+  
+    .food-name {
+      font-size: 20px; /* Larger name font on smaller screens */
+    }
+  
+    .free-trial {
+      width: 100%;
+      font-size: 20px;
+      padding: 15px 10px;
+    }
+  
+    .food-description {
+      font-size: 12px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .weekly-speacial {
+      font-size: 1.2em; /* Further adjust for very small screens */
+    }
+  
+    .free-trial {
+      font-size: 18px;
+    }
+  }
+  

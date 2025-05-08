@@ -1,9 +1,9 @@
-import '../App.css'
 import React from 'react'
 import Food from './Food.js'
 import saladImage from "../assets/greek salad.jpg"; 
 import bruchettaImage from "../assets/bruchetta.svg";
 import lemonImage from "../assets/lemon dessert.jpg";
+import '../App.css'
 
 
 function Weekly() {
