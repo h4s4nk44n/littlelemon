@@ -1,57 +1,57 @@
 import './App.css';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import React, { useReducer } from 'react';
+import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-router-dom';
+import React, { useReducer, useEffect } from 'react';
 import Header from './components/Header';
 import Homepage from './components/Homepage';
 import Weekly from './components/Weekly';
 import Testimonials from './components/Testimonials';
 import About from './components/About';
 import Footer from './components/Footer';
-import BookingForm from './components/BookingForm'; 
+import BookingForm from './components/BookingForm';
+import ConfirmedBooking from './components/ConfirmedBooking';
+import { fetchAPI, submitAPI } from './api';
 
-export const availableTimesReducer = (state = [
-  '17:00',
-  '18:00',
-  '19:00',
-  '20:00',
-  '21:00',
-  '22:00',
-], action) => {
+export const initializeTimes = () => {
+  const today = new Date();
+  return fetchAPI(today);
+};
+
+export const availableTimesReducer = (state, action) => {
   switch (action.type) {
-    case 'UPDATE_TIMES':
-      return state; // For now, return the same available times
-    case 'INITIALIZE_TIMES':
-      return [
-        '17:00',
-        '18:00',
-        '19:00',
-        '20:00',
-        '21:00',
-        '22:00',
-      ]; // Set initial available times when this action is dispatched
+    case 'SET_TIMES':
+      return action.payload;
     default:
       return state;
   }
 };
-function App() {
-  const [availableTimes, dispatch] = useReducer(availableTimesReducer, [
-    '17:00',
-    '18:00',
-    '19:00',
-    '20:00',
-    '21:00',
-    '22:00',
-  ]);
+
+// ✅ This component can safely use useNavigate
+function MainContent() {
+const [availableTimes, dispatch] = useReducer(availableTimesReducer, []);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const today = new Date();
+    const result = fetchAPI(today);
+    dispatch({ type: 'SET_TIMES', payload: result });
+  }, []);
 
   const updateTimes = (selectedDate) => {
-    dispatch({ type: 'UPDATE_TIMES', selectedDate });
+    const result = fetchAPI(new Date(selectedDate));
+    dispatch({ type: 'SET_TIMES', payload: result });
+  };
+
+  const submitForm = (formData) => {
+    if (submitAPI(formData)) {
+      navigate('/confirmed');
+    }
   };
 
   return (
-    <Router>
-      <div className="page-container">
+    <>
+      <header role="banner" className="page-container">
         <Header />
-      </div>
+      </header>
 
       <div className="full-width-green">
         <Routes>
@@ -59,7 +59,10 @@ function App() {
             path="/"
             element={
               <>
-                <Homepage />
+
+                <main>
+                  <Homepage />
+                </main>
                 <div className="weekly-specials">
                   <Weekly />
                 </div>
@@ -78,15 +81,28 @@ function App() {
               <BookingForm
                 availableTimes={availableTimes}
                 updateTimes={updateTimes}
+                submitForm={submitForm}
               />
             }
+          />
+          <Route
+            path="/confirmed"
+            element={<ConfirmedBooking />}
           />
         </Routes>
       </div>
 
-      <div className="footer-block">
+      <div className="footer-block" role="contentinfo">
         <Footer />
       </div>
+    </>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <MainContent />
     </Router>
   );
 }

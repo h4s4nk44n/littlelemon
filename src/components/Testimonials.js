@@ -6,7 +6,7 @@ import user2 from "../assets/user2.jpg" // Assuming you have a second user image
 
 function Testimonials(){
     return(
-        <div className="testimonial-group">
+        <section className="testimonial-group" aria-labelledby="testimonial-header">
                 <p className="testimonial-header">Testimonials</p>
                 <div className="testimonials">
                     <TestimonialCard
@@ -22,7 +22,7 @@ function Testimonials(){
                         attitude="Disliked"
                     />
                 </div>
-        </div>
+        </section>
     );
 }
 

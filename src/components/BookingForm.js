@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import "../App.css";  
 import { useNavigate } from 'react-router-dom';
 
-function BookingForm({ availableTimes, updateTimes }) {
+function BookingForm({ availableTimes, updateTimes, submitForm }) {
+  const [formValid, setFormValid] = useState(false);
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
   const [guests, setGuests] = useState(1);  
@@ -27,11 +28,15 @@ function BookingForm({ availableTimes, updateTimes }) {
     };
     generateAvailableDates();
   }, []);
+  useEffect(() => {
+  const isValid = date && time && guests >= 1 && occasion;
+  setFormValid(isValid);
+}, [date, time, guests, occasion]);
 
-  const handleDateChange = (e) => {
-    setDate(e.target.value);
-    updateTimes(e.target.value); // Update available times based on date
-  };
+ const handleDateChange = (e) => {
+  setDate(e.target.value);
+  updateTimes(e.target.value); // Will trigger fetchAPI internally
+};
 
   const handleTimeChange = (e) => {
     setTime(e.target.value);
@@ -49,20 +54,19 @@ function BookingForm({ availableTimes, updateTimes }) {
     setSpecialRequests(e.target.value);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission (e.g., log form data or send to an API)
-    console.log({
-      date,
-      time,
-      guests,
-      occasion,
-      specialRequests,
-    });
+const handleSubmit = (e) => {
+  e.preventDefault();
 
-    // Redirect to home after form submission
-    navigate('/');
+  const formData = {
+    date,
+    time,
+    guests,
+    occasion,
+    specialRequests,
   };
+
+  submitForm(formData); // 👈 use passed-in function
+};
 
   return (
     <div className="booking-form-container">
@@ -76,14 +80,16 @@ function BookingForm({ availableTimes, updateTimes }) {
             id="res-date"
             value={date}
             onChange={handleDateChange}
-            min={availableDates[0]} // Min date (earliest available)
-            max={availableDates[availableDates.length - 1]} // Max date (latest available)
+            min={availableDates[0]}
+            max={availableDates[availableDates.length - 1]}
+            required // 👈 Required
           />
         </div>
 
         <div className="form-group">
           <label htmlFor="res-time">Choose time</label>
-          <select id="res-time" value={time} onChange={handleTimeChange}>
+          <select id="res-time" value={time} onChange={handleTimeChange} required>
+            <option value="" disabled>Select time</option>
             {availableTimes.map((timeOption) => (
               <option key={timeOption} value={timeOption}>
                 {timeOption}
@@ -95,14 +101,15 @@ function BookingForm({ availableTimes, updateTimes }) {
         <div className="form-group">
           <label htmlFor="guests">Number of guests</label>
           <input
-            type="number"
-            placeholder="1"
-            min="1"
-            max="10"
-            id="guests"
-            value={guests}
-            onChange={handleGuestsChange}
-          />
+          type="number"
+          placeholder="1"
+          min="1" // 👈 At least 1 guest
+          max="10"
+          id="guests"
+          value={guests}
+          onChange={handleGuestsChange}
+          required
+        />
         </div>
 
         <div className="form-group">
@@ -114,9 +121,9 @@ function BookingForm({ availableTimes, updateTimes }) {
           >
             <option value="">Select Occasion</option>
             <option value="Birthday">Birthday</option>
-            <option value="Anniversary">Engagement</option>
+            <option value="Engagement">Engagement</option>
             <option value="Anniversary">Anniversary</option>
-            <option value="Other">Gender Reveal</option>
+            <option value="Gender Reveal">Gender Reveal</option>
             <option value="Other">Other</option>
           </select>
         </div>
@@ -133,10 +140,11 @@ function BookingForm({ availableTimes, updateTimes }) {
 
         <div className="form-group">
           <input
-            type="submit"
-            value="Make Your Reservation"
-            className="submit-btn"
-          />
+          type="submit"
+          value="Make Your Reservation"
+          className="submit-btn"
+          disabled={!formValid} // 👈 disable button until valid
+        />
         </div>
       </form>
     </div>

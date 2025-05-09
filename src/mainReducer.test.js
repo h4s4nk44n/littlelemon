@@ -1,42 +1,33 @@
-import { availableTimesReducer } from './App';  // Adjust the path as necessary
+import { initializeTimes, availableTimesReducer } from './App';
+import { fetchAPI } from './api';
+
+jest.mock('./api'); // 👈 mock the entire API module
+
+describe('initializeTimes', () => {
+  test('should return an array of times from fetchAPI', () => {
+    const mockTimes = ['17:00', '18:00'];
+    fetchAPI.mockReturnValue(mockTimes); // 👈 mock the return
+
+    const result = initializeTimes();
+    expect(result).toEqual(mockTimes);
+  });
+});
 
 describe('availableTimesReducer', () => {
-  
-  // Test for the 'INITIALIZE_TIMES' action
-  it('should return the correct initial available times when "INITIALIZE_TIMES" action is dispatched', () => {
+  test('should return correct times when SET_TIMES action is dispatched', () => {
     const initialState = [];
-    const action = { type: 'INITIALIZE_TIMES' };
+    const newTimes = ['18:00', '19:00'];
+    const action = { type: 'SET_TIMES', payload: newTimes };
 
-    // Run the reducer with the action
-    const newState = availableTimesReducer(initialState, action);
-
-    // Validate that the state matches the expected available times
-    expect(newState).toEqual([
-      '17:00',
-      '18:00',
-      '19:00',
-      '20:00',
-      '21:00',
-      '22:00',
-    ]);
+    const result = availableTimesReducer(initialState, action);
+    expect(result).toEqual(newTimes);
   });
 
-  // Test for the 'UPDATE_TIMES' action
-  it('should return the same available times when "UPDATE_TIMES" action is dispatched', () => {
-    const initialState = [
-      '17:00',
-      '18:00',
-      '19:00',
-      '20:00',
-      '21:00',
-      '22:00',
-    ];
-    const action = { type: 'UPDATE_TIMES', selectedDate: '2023-12-25' }; // Mock selected date
+  test('should return same state when unknown action is dispatched', () => {
+    const initialState = ['17:00'];
+    const action = { type: 'UNKNOWN_ACTION' };
 
-    // Run the reducer with the action
-    const newState = availableTimesReducer(initialState, action);
-
-    // Check that the state remains unchanged for now
-    expect(newState).toEqual(initialState);
+    const result = availableTimesReducer(initialState, action);
+    expect(result).toEqual(initialState);
   });
 });
