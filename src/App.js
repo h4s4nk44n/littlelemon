@@ -66,9 +66,9 @@ const [availableTimes, dispatch] = useReducer(availableTimesReducer, []);
                 <div className="weekly-specials">
                   <Weekly />
                 </div>
-                <div className="testimonial-block">
-                  <Testimonials />
-                </div>
+
+                <Testimonials />
+
                 <div className="about-block">
                   <About />
                 </div>

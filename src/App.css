@@ -82,18 +82,14 @@
 
 .food-row {
   display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0;
-    margin: 0;
-    width: 100%;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  width: 100%;
 }
 
-.food-name {
-    font-family: Inter;
-    justify-items: start;
-  }
 .homepage {
     margin-top : 1em;
     background: #495E57;
@@ -116,13 +112,6 @@
     object-fit: fill;
     margin-top: 1.5em;
   }
-.food-image img {
-    width: 100%;
-    object-fit: fill;
-    margin-top: 1.5em;
-    width : 15.5em;
-    height: 11em;
-  }
 
 .little-header {
   color: #F4CE14;
@@ -135,29 +124,33 @@
   padding : 0;
   margin-top: 1em;
 }
-.weekly-special {
-  color: #000;
-  font-family: Inter;
-  font-size: 40px;
+.weekly-speacial {
+  color: #000; /* black */
+  font-family: Inter, sans-serif;
+  font-size: 2.5rem; /* Adjusted but still big */
   font-style: normal;
-  font-weight: 400;
-  line-height: normal;
+  font-weight: 700; /* bold */
+  line-height: 1.2; /* Fix vertical alignment */
+  margin: 0; /* Remove default h1 margin */
+  padding: 0;
 }
 .free-trial {
   display: inline-flex;
-  padding: 20px 18px 21px 18px;
-  justify-content: center;
   align-items: center;
-  border-radius: 7px;
-  margin-top: 2em;
-  background: #F4CE14;
-  color: #000;
-  font-family: Inter;
-  font-size: 24px;
+  justify-content: center;
+  padding: 0.8em 1.5em;
+  background: #F4CE14; /* your nice yellow */
+  color: #000; /* black text */
+  font-family: Inter, sans-serif;
+  font-size: 1.5rem; /* button font */
   font-style: normal;
-  font-weight: 700;
+  font-weight: 700; /* bold */
   line-height: normal;
-  width: fit-content;
+  border: none;
+  border-radius: 0.5em;
+  height: 3rem; /* Force height to align with h1 */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 .hero-text-column {
   display: flex;
@@ -166,16 +159,15 @@
   gap:2.8em;
 }
 .homepage-paragraph {
-  width: 420px;
-  height: 118px;
-  flex-shrink: 0;
-
+  display: block;
+  max-width: 15em;
   color: #FFF;
   font-family: Inter;
   font-size: 1.75em;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+  margin: 0;
 }
 
 .weekly-block {
@@ -193,42 +185,77 @@
 }
 .weekly-specials {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: row;
   justify-content: space-between;
   gap: 1em;
   width: 100%;
   box-sizing: border-box;
   margin-top : 2em;
 }
+@media (max-width: 688px) {
+  .hero-image img{
+    display: none;
+  }
+}
+@media (max-width: 780px) {
+  .weekly-specials {
+    flex-direction: column;
+    align-items: center;
+    gap: 2em;
+  }
+  .testimonial-group {
+    flex-direction: column;
+    align-items: center;
+  }
+  .testimonial-card {
+    flex: none;
+    width: 90%;
+    max-width: 25em;
+  }
+  .food-item {
+    width: 100%;
+    max-width: 25em;
+  }
+  .food-row {
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.5em;
+  }
+  .food-name, .food-price {
+    margin: 0.5em 0;
+  }
 
-.food-item {
-  width : 15.5em;
-  height :11em;
-  box-sizing: border-box;
-  margin: 0 auto;
+  .footer {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-column {
+    width: 100%;
+    max-width: 25em;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 2em;
+  }
+
+  .footer-column h4,
+  .footer-column ul,
+  .footer-column li {
+    text-align: left;
+  }
+  .about-image img{
+    display: none;
+  }
+}
+
+.food-details {
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: left;
 }
 
-.food-price {
-  color: #B5A000;
-  font-family: Inter;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-}
-
-.testimonial-group {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 0 2em;
-  margin-top : 25em;
-  padding-inline: 2em;
-}
 @media (min-width: 53.75em) {
   .page-container {
     padding: 0 2rem;
@@ -236,19 +263,24 @@
 }
 
 .testimonial-card {
-  background-color : rgba(116, 116, 116, 0.5);
-  max-width: 30%;
+  flex: 1 1 22em;  /* GROW, SHRINK, BASE WIDTH 22em */
+  background-color: rgba(116, 116, 116, 0.5);
   text-align: left;
-  border-radius : 1em;
+  border-radius: 1em;
+  padding: 1.5em;
+  box-sizing: border-box;
+  min-width: 18em;
+  max-width: 22em;
 }
 
-.testimonials{
+.testimonials {
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  flex-wrap: wrap;
   justify-content: center;
-  flex: space-between;
   gap: 2em;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 2em;
 }
 
 .testimonial-image-container {
@@ -301,11 +333,12 @@
 
 .testimonial-group {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-wrap: wrap;  /* Allow wrapping! */
   justify-content: center;
-  padding: 0 2em;
-  margin-top : 25em;
+  gap: 2em;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 2em;
 }
 
 .about-page {
@@ -391,35 +424,22 @@
 
 .footer {
   display: flex;
+  flex-wrap : wrap;
+  flex-direction: row;
   justify-content: space-around;
   padding: 3em 2em;
   flex-wrap: wrap;
   font-family: Inter, sans-serif;
   max-width: 53.75em;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 4.375;
 }
 
 .footer-column {
   display: flex;
   flex-direction: column;
-  min-width: 150px;
   gap: 0.5em;
-}
-
-.footer-column h4 {
-  font-size: 1em;
-  font-weight: 700;
-  margin-bottom: 0.5em;
-}
-
-.footer-column ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.footer-column li {
-  font-size: 0.95em;
-  color: #111;
 }
 
 .footer-block {
@@ -509,4 +529,182 @@ select:focus {
 
 .submit-btn:hover {
   background-color: #f3b600; /* Darken the yellow when hovered */
+}
+
+
+/* Fix the food-item style */
+.food-item {
+  width: auto;
+  box-sizing: border-box;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: white;
+  padding: 1em;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Image */
+.food-image img {
+  width: 100%;
+  height: 11em;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Name and Price row */
+.food-row {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 1em;
+}
+
+.name-price {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 1em;
+}
+
+/* Name */
+.food-name {
+  font-family: Inter;
+  font-weight: 700;
+  font-size: 1.2em;
+  margin: 0;
+}
+
+/* Price */
+.food-price {
+  color: #B5A000;
+  font-family: Inter;
+  font-size: 1.1em;
+  font-weight: 700;
+  margin: 0;
+}
+
+/* Description */
+.food-description {
+  font-family: Inter;
+  font-size: 0.9em;
+  margin-top: 0.8em;
+  text-align: left;
+}
+
+.food-delivery {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  margin-top: 0.2em;
+}
+
+.delivery-icon {
+  width: 1.5em;
+  height: 1.5em;
+}
+
+
+.navbar {
+  position: relative;
+}
+
+.hamburger {
+  display: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color : black;
+}
+
+.nav-links {
+  display: flex;
+  flex-direction: row;
+  gap: 1.2em;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.nav-links li {
+  color: black;
+  font-family: Inter;
+  font-size: 1.1em;
+  font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background-color: #fff;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 12em;
+    padding: 1em;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    border-radius: 0.5em;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-links li {
+    margin: 0.5em 0;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+  }
+}
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 3em 2em;
+  background-color: #495E57;
+  max-width: 53.75em;
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.footer-column {
+  flex: 1 1 1; /* <<< Add this */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 1em;
+  color: #d6d6d6;
+}
+
+.footer-column h4 {
+  font-size: 1.2em;
+  font-weight: 700;
+  margin-bottom: 1em;
+  color: #d6d6d6;
+}
+
+.footer-column ul {
+  list-style: none;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-column li {
+  font-size: 1em;
+  margin-bottom: 0.5em;
+  color: #d6d6d6;
 }

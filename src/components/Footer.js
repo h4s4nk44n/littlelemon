@@ -3,7 +3,7 @@ import "../App.css"; // Assuming you have a CSS file for styles
 
 function Footer() {
     return (
-        <footer className="footer page-container">
+        <footer className="footer" >
             <div className="footer-column">
                 <h4>Doormat Navigation</h4>
                 <ul>
